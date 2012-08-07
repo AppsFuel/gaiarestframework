@@ -1,0 +1,4 @@
+mysql-python
+psycopg2
+pep8
+https://github.com/dcramer/pyflakes/tarball/master
