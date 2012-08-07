@@ -1,0 +1,26 @@
+[
+    {
+        "pk": 1,
+        "model": "library.author",
+        "fields": {
+            "surname": "collins",
+            "name": "suzanne"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "library.author",
+        "fields": {
+            "surname": "milton",
+            "name": "john"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "library.author",
+        "fields": {
+            "surname": "grisham",
+            "name": "john"
+        }
+    }
+]

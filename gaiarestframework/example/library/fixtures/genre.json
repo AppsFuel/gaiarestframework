@@ -1,0 +1,23 @@
+[
+    {
+        "pk": 1,
+        "model": "library.genre",
+        "fields": {
+            "description" : "Science fiction"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "library.genre",
+        "fields": {
+            "description" : "Fantasy"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "library.genre",
+        "fields": {
+            "description" : "Adventure"
+        }
+    }
+]

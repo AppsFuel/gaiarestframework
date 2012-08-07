@@ -1,0 +1,29 @@
+[
+    {
+        "pk": 1,
+        "model": "library.book",
+        "fields": {
+            "genre": 1,
+            "author": 1,
+            "title": "The Hunger Games"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "library.book",
+        "fields": {
+            "genre": 1,
+            "author": 1,
+            "title": "Catching Fire"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "library.book",
+        "fields": {
+            "genre": 1,
+            "author": 1,
+            "title": "Mockingjay"
+        }
+    }
+]

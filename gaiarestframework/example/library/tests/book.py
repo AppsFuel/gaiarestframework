@@ -1,0 +1,26 @@
+from gaiarestframework import testutils
+from django.core.urlresolvers import reverse
+from example.library.models import Book
+
+
+class BookListTestCase(testutils.GaiaTestCase):
+    fixtures = ['user.json', 'author.json', 'book.json', 'genre.json']
+    resource_cls = Book
+    resource_list_path = reverse('book_list', kwargs={'author': 1})
+    resource_instance_path = reverse('book_info',
+        kwargs={'author': 1, 'id': 1})
+    resource = {
+        'title': 'Gregor the Overlander',
+        'author': 1,
+        'genre': 2,
+        }
+
+    def get_object_dict(self, item):
+        return dict(title=item['title'], author=item['author']['id'])
+
+    def get_assertion_dict(self, object):
+        return {
+            'url': reverse('book_info',
+                kwargs={'author': object.author.id, 'id': object.id},
+                prefix='http://testserver/'),
+            }
