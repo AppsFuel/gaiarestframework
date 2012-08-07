@@ -20,7 +20,7 @@ INSTALLED_APP
 -------------
 ::
 
-    'gaiarestframework', #TEMPLATE ISSUE: gaia before django
+    'gaiarestframework',  # TEMPLATE ISSUE: gRF before django
     'djangorestframework',
     'django.contrib.admin',
 
