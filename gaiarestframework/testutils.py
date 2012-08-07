@@ -11,6 +11,7 @@ class GaiaTestCase(TestCase):
     resource = NotImplemented
     resource_list_path = NotImplemented
     resource_instance_path = NotImplemented
+    antidupe = True
 
     @property
     def resource_update(self):
@@ -83,7 +84,7 @@ class GaiaTestCase(TestCase):
     def testCreateDupeStatus(self):
         self.client.post(self.resource_list_path, data=self.resource)
         resp = self.client.post(self.resource_list_path, data=self.resource)
-        self.assertEqual(resp.status_code, 400)
+        self.assertEqual(resp.status_code, 400 if self.antidupe else 201)
 
     def testDeleteNotAllowed(self):
         count = self.resource_cls.objects.count()
