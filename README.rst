@@ -11,6 +11,7 @@ INSTALLED_APP
 -------------
 
 ::
+
     'gaiarestframework', #TEMPLATE ISSUE: gaia before django
     'djangorestframework',
     'django.contrib.admin',
@@ -20,4 +21,5 @@ TEMPLATE_CONTEXT_PROCESSORS
 ---------------------------
 
 ::
+
     'gaiarestframework.context_processor.hostname'
