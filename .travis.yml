@@ -11,6 +11,6 @@ install:
 before_script:
   - pip install -q -r test_requirements.txt --use-mirrors
 script:
-  - pep8 --ignore=E501 gaiarestframework
+  - pep8 --ignore=E501 --exclude=example gaiarestframework
   - pyflakes -x W gaiarestframework
   - python gaiarestframework/example/manage.py test library

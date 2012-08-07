@@ -4,7 +4,7 @@ __all__ = (
     'GaiaListModelMixin',
     'GaiaCreateModelMixin',
     'GaiaUpdateModelMixin',
-    )
+)
 
 
 QP_RESERVED = ('limit', 'page')
@@ -12,13 +12,13 @@ QP_RESERVED = ('limit', 'page')
 
 class GaiaListModelMixin(ListModelMixin):
     def get_query_kwargs(self, request, *args, **kwargs):
-        kwargs.update([(str(k), v) for k,v in request.GET.items() if k not in QP_RESERVED])
+        kwargs.update([(str(k), v) for k, v in request.GET.items() if k not in QP_RESERVED])
         return super(GaiaListModelMixin, self).get_query_kwargs(request, *args, **kwargs)
 
 
 def set_data_from_path(view, **kwargs):
     fields = view._resource.get_bound_form().fields
-    view._data =  dict(view._data.items())
+    view._data = dict(view._data.items())
 
     for key, value in kwargs.items():
         if key in fields:

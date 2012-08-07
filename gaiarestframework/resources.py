@@ -1,8 +1,7 @@
 from djangorestframework.resources import ModelResource
 
-__all__ = (
-    'GaiaModelResource',
-    )
+__all__ = ('GaiaModelResource',)
+
 
 class GaiaModelResource(ModelResource):
     include = ('url',)

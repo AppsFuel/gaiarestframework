@@ -119,7 +119,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'example.library',
-
 )
 
 LOGGING = {
