@@ -5,8 +5,14 @@ utils for django-rest-framework
 .. image:: https://secure.travis-ci.org/z4r/gaiarestframework.png?branch=master
    :target: http://travis-ci.org/z4r/gaiarestframework
 
-Mixins and Views for gaia.
 Based on `django-rest-framework`_.
+
+* Filter on query string
+* Tree Navigation
+* Hostname context processor
+* Definition of Url
+* Utils to test a Resource
+* And More...
 
 .. _django-rest-framework: http://github.com/tomchristie/django-rest-framework
 
