@@ -10,7 +10,7 @@ Based on `django-rest-framework`_.
 * Filter on query string
 * Tree Navigation
 * Hostname context processor
-* Definition of Url
+* Definition of `url`
 * Utils to test a Resource
 * And More...
 
