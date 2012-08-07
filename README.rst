@@ -22,4 +22,4 @@ TEMPLATE_CONTEXT_PROCESSORS
 
 ::
 
-    'gaiarestframework.context_processor.hostname'
+    'gaiarestframework.context_processors.hostname'
