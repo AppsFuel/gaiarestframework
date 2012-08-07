@@ -9,6 +9,7 @@ Based on `django-rest-framework`_.
 
 INSTALLED_APP
 -------------
+
 ::
     'gaiarestframework', #TEMPLATE ISSUE: gaia before django
     'djangorestframework',
@@ -17,5 +18,6 @@ INSTALLED_APP
 
 TEMPLATE_CONTEXT_PROCESSORS
 ---------------------------
+
 ::
     'gaiarestframework.context_processor.hostname'
