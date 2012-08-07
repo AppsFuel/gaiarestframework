@@ -1,6 +1,6 @@
-====================================
-django-rest-framework utils for gaia
-====================================
+===============================
+utils for django-rest-framework
+===============================
 
 .. image:: https://secure.travis-ci.org/z4r/gaiarestframework.png?branch=master
    :target: http://travis-ci.org/z4r/gaiarestframework
