@@ -43,7 +43,4 @@ setup(
     install_requires = reqs,
     packages=find_packages(),
     include_package_data=True,
-    dependency_links = [
-        'https://github.com/tomchristie/django-rest-framework/tarball/master#egg=djangorestframework-0.4.0-dev'
-    ]
 )
