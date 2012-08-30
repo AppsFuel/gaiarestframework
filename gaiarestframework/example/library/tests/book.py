@@ -1,6 +1,6 @@
 from gaiarestframework import testutils
 from django.core.urlresolvers import reverse
-from example.library.models import Book
+from example.library.models import Book, Author
 
 
 class BookListTestCase(testutils.GaiaTestCase):
@@ -13,14 +13,18 @@ class BookListTestCase(testutils.GaiaTestCase):
         'title': 'Gregor the Overlander',
         'author': 1,
         'genre': 2,
-        }
+    }
 
     def get_object_dict(self, item):
-        return dict(title=item['title'], author=item['author']['id'])
+        return dict(
+            title=item['title'],
+            author__name=item['author']['name'],
+            author__surname=item['author']['surname'],
+        )
 
     def get_assertion_dict(self, object):
         return {
             'url': reverse('book_info',
                 kwargs={'author': object.author.id, 'id': object.id},
                 prefix='http://testserver/'),
-            }
+        }
