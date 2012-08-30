@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from example.library.models import Genre
 
 
-class GenreListTestCase(testutils.GaiaTestCase):
+class GenreListTestCase(testutils.GaiaAuthTestCase):
     fixtures = ['user.json', 'genre.json', ]
     resource_cls = Genre
     resource = {'description': 'Thriller', }

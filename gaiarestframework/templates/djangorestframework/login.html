@@ -1,16 +1,18 @@
 {% load static %}
 {% load url from future %}
+{% load gaia_tags %}
+
 
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href='{% get_static_prefix %}djangorestframework/css/style.css'/>
-        <title>{% block title %}GAIA | {{ name }}{% endblock %}</title>
+        <title>{% block title %}{% gaia_title %} | {{ name }}{% endblock %}</title>
     </head>
     <body class="login">
         <div id="container">
             <div id="header">
                 <div id="branding">
-                    <h1 id="site-name">GAIA <span class="version">beta</span></h1>
+                    <h1 id="site-name">{% gaia_title %} <span class="version">{% gaia_version %} @ {{ HOSTNAME }}</span></h1>
                 </div>
             </div>
             <div id="content" class="colM">

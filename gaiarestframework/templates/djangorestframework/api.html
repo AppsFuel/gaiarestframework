@@ -1,3 +1,4 @@
 {% extends "djangorestframework/base.html" %}
-{% block title %}GAIA | {{ name }}{% endblock %}
-{% block branding %}GAIA <span class="version">beta @ {{ HOSTNAME }}</span>{% endblock %}
+{% load gaia_tags %}
+{% block title %}{% gaia_title %} | {{ name }}{% endblock %}
+{% block branding %}{% gaia_title %} <span class="version">{% gaia_version %} @ {{ HOSTNAME }}</span>{% endblock %}

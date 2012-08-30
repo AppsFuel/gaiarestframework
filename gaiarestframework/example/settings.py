@@ -90,21 +90,31 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    )
+)
 
 ROOT_URLCONF = 'urls'
 
 ROOT_PATH = 'api/1.0/'
-LOGIN_PATH = 'api/1.0/login/'
-LOGIN_URL = '/'+LOGIN_PATH
 LOGIN_REDIRECT_URL = '/'+ROOT_PATH
-LOGOUT_PATH = 'api/1.0/logout/'
-LOGOUT_URL = '/'+LOGOUT_PATH
+
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'gaiarestframework.context_processors.hostname',
+)
+
+GAIA_TITLE = 'LIBRARY'
+GAIA_VERSION = 'alpha'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

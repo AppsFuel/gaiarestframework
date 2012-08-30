@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 from gaiarestframework.views import *
 
@@ -20,9 +20,9 @@ urlpatterns = patterns('',
         name='book_info'),
 
     url(r'^genre/$',
-        GaiaListOrCreateModelView.as_view(resource=GenreResource),
+        AuthGaiaListOrCreateModelView.as_view(resource=GenreResource),
         name='genre_list'),
     url(r'^genre/(?P<id>[^/]+)/$',
-        GaiaInstanceModelView.as_view(resource=GenreResource),
+        AuthGaiaInstanceModelView.as_view(resource=GenreResource),
         name='genre_info'),
 )

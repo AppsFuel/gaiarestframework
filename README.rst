@@ -31,3 +31,11 @@ TEMPLATE_CONTEXT_PROCESSORS
 
     'gaiarestframework.context_processors.hostname'
 
+
+TITLE 'n' VERSION
+-----------------
+::
+
+    GAIA_TITLE = 'GAIA'
+    GAIA_VERSION = 'beta'
+
