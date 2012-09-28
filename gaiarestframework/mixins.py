@@ -1,9 +1,11 @@
+from urlobject import URLObject
 from djangorestframework.mixins import *
 
 __all__ = (
     'GaiaListModelMixin',
     'GaiaCreateModelMixin',
     'GaiaUpdateModelMixin',
+    'GaiaPaginatorMixin',
 )
 
 
@@ -40,3 +42,13 @@ class GaiaUpdateModelMixin(UpdateModelMixin):
         kwargs = set_data_from_path(self, **kwargs)
         resp = super(GaiaUpdateModelMixin, self).put(request, *args, **kwargs)
         return self.resource.model.objects.get(pk=resp.pk)
+
+
+class GaiaPaginatorMixin(PaginatorMixin):
+    def url_with_page_number(self, page_number):
+        url = URLObject(self.request.build_absolute_uri())
+        url = url.set_query_param('page', str(page_number))
+        limit = self.get_limit()
+        if limit != self.limit:
+            url = url.set_query_param('limit', str(limit))
+        return url

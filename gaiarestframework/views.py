@@ -1,4 +1,4 @@
-from djangorestframework.mixins import ReadModelMixin, DeleteModelMixin, PaginatorMixin
+from djangorestframework.mixins import ReadModelMixin, DeleteModelMixin
 from djangorestframework.permissions import IsAuthenticated
 from djangorestframework.views import ModelView
 from gaiarestframework.mixins import *
@@ -11,7 +11,7 @@ __all__ = (
 )
 
 
-class GaiaListOrCreateModelView(PaginatorMixin, GaiaListModelMixin, GaiaCreateModelMixin, ModelView):
+class GaiaListOrCreateModelView(GaiaPaginatorMixin, GaiaListModelMixin, GaiaCreateModelMixin, ModelView):
     _suffix = 'List'
 
 

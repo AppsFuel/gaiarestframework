@@ -28,7 +28,7 @@ class GaiaTestCase(TestCase):
         count = self.resource_cls.objects.count()
         pages = int(ceil(count / 20.0))
         self.assertEqual(content['page'], 1)
-        self.assertEqual(content['next'], self.resource_list_path + '?page=3' if pages > 1 else None)
+        self.assertEqual(content['next'], 'http://testserver' + self.resource_list_path + '?page=3' if pages > 1 else None)
         self.assertEqual(content['per_page'], 20)
         self.assertEqual(content['total'], count)
         self.assertEqual(content['pages'], pages)
@@ -39,11 +39,11 @@ class GaiaTestCase(TestCase):
         content = json.loads(resp.content)
         count = self.resource_cls.objects.count()
         self.assertEqual(content['page'], 2)
-        self.assertEqual(content['next'], self.resource_list_path + '?page=3&limit=1')
+        self.assertEqual(content['next'], 'http://testserver' + self.resource_list_path + '?page=3&limit=1')
         self.assertEqual(content['per_page'], 1)
         self.assertEqual(content['total'], count)
         self.assertEqual(content['pages'], count)
-        self.assertEqual(content['previous'], self.resource_list_path + '?page=1&limit=1')
+        self.assertEqual(content['previous'], 'http://testserver' + self.resource_list_path + '?page=1&limit=1')
 
     def testListContentResults(self):
         resp = self.client.get(self.resource_list_path)

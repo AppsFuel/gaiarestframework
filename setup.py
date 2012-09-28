@@ -11,7 +11,7 @@ pkg = __import__('gaiarestframework')
 
 author, email = 'Andrea De Marco', 'andrea.demarco@buongiorno.com'
 
-version = '0.1.1'
+version = '0.2.0'
 classifiers = [
     'Development Status :: 4 - Beta',
     'Framework :: Django',
