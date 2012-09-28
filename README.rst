@@ -12,6 +12,7 @@ Based on `django-rest-framework`_.
 * Hostname context processor
 * Definition of `url`
 * Utils to test a Resource
+* Absolute URLs in pagination
 * And More...
 
 .. _django-rest-framework: http://github.com/tomchristie/django-rest-framework
