@@ -1,4 +1,5 @@
 from djangorestframework.mixins import *
+from gaiarestframework.settings import GAIA_PAGINATOR_LIMIT
 
 __all__ = (
     'GaiaListModelMixin',
@@ -44,6 +45,8 @@ class GaiaUpdateModelMixin(UpdateModelMixin):
 
 
 class GaiaPaginatorMixin(PaginatorMixin):
+    limit = GAIA_PAGINATOR_LIMIT
+
     def url_with_page_number(self, page_number):
         return self.request.build_absolute_uri(
             super(GaiaPaginatorMixin, self).url_with_page_number(page_number)

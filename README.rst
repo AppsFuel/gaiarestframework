@@ -39,4 +39,6 @@ TITLE 'n' VERSION
 
     GAIA_TITLE = 'GAIA'
     GAIA_VERSION = 'beta'
+    GAIA_PAGINATOR_LIMIT = 20
+
 

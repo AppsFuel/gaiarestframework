@@ -1,7 +1,8 @@
 import json
 from math import ceil
-from django.test import TestCase
 from django.core.serializers.json import DjangoJSONEncoder
+from django.test import TestCase
+from gaiarestframework.settings import GAIA_PAGINATOR_LIMIT
 json_datetime = lambda dt: DjangoJSONEncoder().default(dt)
 
 
@@ -29,7 +30,7 @@ class GaiaTestCase(TestCase):
         pages = int(ceil(count / 20.0))
         self.assertEqual(content['page'], 1)
         self.assertEqual(content['next'], 'http://testserver' + self.resource_list_path + '?page=3' if pages > 1 else None)
-        self.assertEqual(content['per_page'], 20)
+        self.assertEqual(content['per_page'], GAIA_PAGINATOR_LIMIT)
         self.assertEqual(content['total'], count)
         self.assertEqual(content['pages'], pages)
         self.assertEqual(content['previous'], None)
