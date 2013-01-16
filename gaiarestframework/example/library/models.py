@@ -12,7 +12,7 @@ class Author(models.Model):
         return 'author_info', [self.pk]
 
 class Genre(models.Model):
-    description = models.CharField(max_length=50, unique=True)
+    description = models.CharField(max_length=50, primary_key=True)
 
     @models.permalink
     def get_absolute_url(self):

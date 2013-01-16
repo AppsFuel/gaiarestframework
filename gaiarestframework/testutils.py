@@ -94,7 +94,8 @@ class GaiaTestCase(TestCase):
         resp = self.client.put(self.resource_instance_path, data=self.resource_update)
         item = json.loads(resp.content)
         self.assertItem(item)
-        self.assertEqual(self.resource_cls.objects.count(), count)
+        update_can_create = int(self.resource_cls._meta.pk.name in self.resource_update)
+        self.assertEqual(self.resource_cls.objects.count(), count + update_can_create)
 
     def testUpdateEmptyStatus(self):
         resp = self.client.put(self.resource_instance_path)

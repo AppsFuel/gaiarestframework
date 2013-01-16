@@ -19,7 +19,9 @@ class GaiaListModelMixin(ListModelMixin):
 
 
 def set_data_from_path(view, **kwargs):
-    fields = view._resource.get_bound_form().fields
+    pk_name = view._resource.model._meta.pk.name
+    form_fields = view._resource.get_bound_form().fields
+    fields = [field for field in form_fields if field != pk_name]
     view._data = dict(view._data.items())
 
     for key, value in kwargs.items():
