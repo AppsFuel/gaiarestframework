@@ -1,23 +1,17 @@
 [
     {
-        "pk": 1,
+        "pk": "Science fiction",
         "model": "library.genre",
-        "fields": {
-            "description" : "Science fiction"
-        }
+        "fields": {}
     },
     {
-        "pk": 2,
+        "pk": "Fantasy",
         "model": "library.genre",
-        "fields": {
-            "description" : "Fantasy"
-        }
+        "fields": {}
     },
     {
-        "pk": 3,
+        "pk": "Adventure",
         "model": "library.genre",
-        "fields": {
-            "description" : "Adventure"
-        }
+        "fields": {}
     }
 ]

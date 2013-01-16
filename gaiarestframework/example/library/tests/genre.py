@@ -8,13 +8,13 @@ class GenreListTestCase(testutils.GaiaAuthTestCase):
     resource_cls = Genre
     resource = {'description': 'Thriller', }
     resource_list_path = reverse('genre_list')
-    resource_instance_path = reverse('genre_info', kwargs={'id': 1})
+    resource_instance_path = reverse('genre_info', kwargs={'description': 'Fantasy'})
 
     def get_object_dict(self, item):
         return dict(description=item['description'])
 
     def get_assertion_dict(self, object):
         return {
-            'url': reverse('genre_info', kwargs={'id': object.id},
+            'url': reverse('genre_info', kwargs={'description': object.pk},
                 prefix='http://testserver/'),
-            }
+        }

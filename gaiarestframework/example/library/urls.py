@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^genre/$',
         AuthGaiaListOrCreateModelView.as_view(resource=GenreResource),
         name='genre_list'),
-    url(r'^genre/(?P<id>[^/]+)/$',
+    url(r'^genre/(?P<description>[^/]+)/$',
         AuthGaiaInstanceModelView.as_view(resource=GenreResource),
         name='genre_info'),
 )

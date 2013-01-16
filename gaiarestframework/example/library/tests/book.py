@@ -7,12 +7,11 @@ class BookListTestCase(testutils.GaiaTestCase):
     fixtures = ['user.json', 'author.json', 'book.json', 'genre.json']
     resource_cls = Book
     resource_list_path = reverse('book_list', kwargs={'author': 1})
-    resource_instance_path = reverse('book_info',
-        kwargs={'author': 1, 'id': 1})
+    resource_instance_path = reverse('book_info', kwargs={'author': 1, 'id': 1})
     resource = {
         'title': 'Gregor the Overlander',
         'author': 1,
-        'genre': 2,
+        'genre': "Fantasy",
     }
 
     def get_object_dict(self, item):
