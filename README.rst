@@ -2,8 +2,8 @@
 utils for django-rest-framework
 ===============================
 
-.. image:: https://secure.travis-ci.org/z4r/gaiarestframework.png?branch=master
-   :target: http://travis-ci.org/z4r/gaiarestframework
+.. image:: https://secure.travis-ci.org/AppsFuel/gaiarestframework.png?branch=master
+   :target: http://travis-ci.org/AppsFuel/gaiarestframework
 
 Based on `django-rest-framework`_.
 
