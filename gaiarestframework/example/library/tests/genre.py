@@ -6,7 +6,7 @@ from example.library.models import Genre
 class GenreListTestCase(testutils.GaiaAuthTestCase):
     fixtures = ['user.json', 'genre.json', ]
     resource_cls = Genre
-    resource = {'description': 'Thriller', }
+    resource = {'description': 'Thriller', 'toremove': True}
     resource_list_path = reverse('genre_list')
     resource_instance_path = reverse('genre_info', kwargs={'description': 'Fantasy'})
 

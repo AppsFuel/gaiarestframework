@@ -22,12 +22,15 @@ def set_data_from_path(view, **kwargs):
     pk_name = view._resource.model._meta.pk.name
     form_fields = view._resource.get_bound_form().fields
     fields = [field for field in form_fields if field != pk_name]
+    model_fields = [field.name for field in view._resource.model._meta.fields]
     view._data = dict(view._data.items())
-
     for key, value in kwargs.items():
         if key in fields:
             view._data[key] = value
             del kwargs[key]
+    view.CONTENT  # !
+    for field in set(fields) - set(model_fields):
+        del view._content[field]
     return kwargs
 
 
