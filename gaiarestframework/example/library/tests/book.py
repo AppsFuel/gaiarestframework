@@ -13,6 +13,11 @@ class BookListTestCase(testutils.GaiaTestCase):
         'author': 1,
         'genre': "Fantasy",
     }
+    resource_update = {
+        'title': 'The Hunger Games',
+        'author': 1,
+        'genre': 'Fantasy',
+    }
 
     def get_object_dict(self, item):
         return dict(

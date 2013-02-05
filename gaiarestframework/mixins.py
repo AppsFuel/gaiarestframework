@@ -44,6 +44,8 @@ class GaiaCreateModelMixin(CreateModelMixin):
 
 class GaiaUpdateModelMixin(UpdateModelMixin):
     def put(self, request, *args, **kwargs):
+        query_kwargs = self.get_query_kwargs(request, **kwargs)
+        self.model_instance = self.get_instance(**query_kwargs)
         kwargs = set_data_from_path(self, **kwargs)
         resp = super(GaiaUpdateModelMixin, self).put(request, *args, **kwargs)
         return self.resource.model.objects.get(pk=resp.pk)
