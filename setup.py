@@ -41,6 +41,6 @@ setup(
     long_description=long_description,
     classifiers=classifiers,
     install_requires = reqs,
-    packages=find_packages(),
+    packages=find_packages(exclude='example'),
     include_package_data=True,
 )

@@ -29,4 +29,3 @@ class Book(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return 'book_info', [self.author.pk, self.pk]
-

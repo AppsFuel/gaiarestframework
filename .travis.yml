@@ -2,10 +2,14 @@ language: python
 python:
   - "2.6"
   - "2.7"
+env:
+  - DJANGO=1.4
+  - DJANGO=1.5
 install:
+  - pip install -q django==$DJANGO --use-mirrors
   - pip install -q -e . --use-mirrors
 before_script:
   - pip install -q -r test_requirements.txt --use-mirrors
 script:
-  - pep8 --ignore=E501 --exclude=example gaiarestframework
-  - python gaiarestframework/example/manage.py test library
+  - pep8 --ignore=E501 gaiarestframework
+  - python example/manage.py test library

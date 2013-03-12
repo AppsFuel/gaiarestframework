@@ -1,6 +1,7 @@
-from gaiarestframework import testutils
 from django.core.urlresolvers import reverse
+from gaiarestframework import testutils
 from example.library.models import Author
+
 
 class AuthorTestCase(testutils.GaiaTestCase):
     fixtures = ['user.json', 'author.json', ]
@@ -15,9 +16,8 @@ class AuthorTestCase(testutils.GaiaTestCase):
             'surname': item['surname'],
         }
 
-    def get_assertion_dict(self, object):
+    def get_assertion_dict(self, obj):
         return {
-            'url': reverse('author_info', kwargs={'id': object.id},
-                prefix='http://testserver/'),
+            'url': testutils.reverse('author_info', kwargs={'id': obj.id}),
         }
 

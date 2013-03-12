@@ -26,9 +26,7 @@ class BookListTestCase(testutils.GaiaTestCase):
             author__surname=item['author']['surname'],
         )
 
-    def get_assertion_dict(self, object):
+    def get_assertion_dict(self, obj):
         return {
-            'url': reverse('book_info',
-                kwargs={'author': object.author.id, 'id': object.id},
-                prefix='http://testserver/'),
+            'url': testutils.reverse('book_info', kwargs={'author': obj.author.id, 'id': obj.id}),
         }

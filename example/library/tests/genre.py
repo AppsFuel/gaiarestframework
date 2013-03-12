@@ -13,8 +13,7 @@ class GenreListTestCase(testutils.GaiaAuthTestCase):
     def get_object_dict(self, item):
         return dict(description=item['description'])
 
-    def get_assertion_dict(self, object):
+    def get_assertion_dict(self, obj):
         return {
-            'url': reverse('genre_info', kwargs={'description': object.pk},
-                prefix='http://testserver/'),
+            'url': testutils.reverse('genre_info', kwargs={'description': obj.pk}),
         }
