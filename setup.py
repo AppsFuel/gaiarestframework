@@ -11,7 +11,7 @@ pkg = __import__('gaiarestframework')
 
 author, email = 'Andrea De Marco', 'andrea.demarco@buongiorno.com'
 
-version = '0.4'
+version = '0.4.1'
 classifiers = [
     'Development Status :: 4 - Beta',
     'Framework :: Django',
@@ -40,7 +40,7 @@ setup(
     description=description,
     long_description=long_description,
     classifiers=classifiers,
-    install_requires = reqs,
-    packages=find_packages(exclude='example'),
+    install_requires=reqs,
+    packages=find_packages(exclude=('example', 'example.*',)),
     include_package_data=True,
 )

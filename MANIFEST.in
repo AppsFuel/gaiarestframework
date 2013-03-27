@@ -1,4 +1,3 @@
 recursive-include gaiarestframework/static/ *.css
 recursive-include gaiarestframework/templates *.html
-recursive-include gaiarestframework/example *.py *.json
 include README.rst requirements.txt
