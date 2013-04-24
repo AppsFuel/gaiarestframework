@@ -1,4 +1,5 @@
 {% extends "djangorestframework/base.html" %}
 {% load gaia_tags %}
+{% block extrahead %}<meta http-equiv="content-type" content="text/html; charset=utf-8">{% endblock %}
 {% block title %}{% gaia_title %} | {{ name }}{% endblock %}
 {% block branding %}{% gaia_title %} <span class="version">{% gaia_version %} @ {{ HOSTNAME }}</span>{% endblock %}
