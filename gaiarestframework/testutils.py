@@ -87,6 +87,11 @@ class GaiaTestCase(TestCase):
         for item in results:
             self.assertItem(item)
 
+    def testListQSError(self):
+        resp = self.client.get(self.resource_list_path + '?1__like=er')
+        self.assertEqual(resp.status_code, 400)
+        self.assertTrue('detail' in json.loads(resp.content))
+
     def testCreateStatus(self):
         resp = self.client.post(self.resource_list_path, data=self.resource)
         self.assertEqual(resp.status_code, 201)

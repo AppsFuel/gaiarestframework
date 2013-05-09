@@ -1,3 +1,4 @@
+from django.core.exceptions import FieldError
 from djangorestframework import status
 from djangorestframework.mixins import *
 from djangorestframework.response import ErrorResponse
@@ -18,6 +19,12 @@ class GaiaListModelMixin(ListModelMixin):
     def get_query_kwargs(self, request, *args, **kwargs):
         kwargs.update([(str(k), v) for k, v in request.GET.items() if k not in QP_RESERVED])
         return super(GaiaListModelMixin, self).get_query_kwargs(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        try:
+            return super(GaiaListModelMixin, self).get(request, *args, **kwargs)
+        except FieldError as e:
+            raise ErrorResponse(status.HTTP_400_BAD_REQUEST, {'detail': '%s' % e})
 
 
 def set_data_from_path(view, **kwargs):
