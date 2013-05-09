@@ -167,13 +167,6 @@ class GaiaAuthTestCase(GaiaTestCase):
     def setUp(self):
         self.client.login(username='test', password='test')
 
-    def testReadForbiddenStatus(self):
-        self.client.logout()
-        resp = self.client.get(self.resource_list_path)
-        self.assertEqual(resp.status_code, 403)
-        resp = self.client.get(self.resource_instance_path)
-        self.assertEqual(resp.status_code, 403)
-
     def testCreateForbiddenStatus(self):
         self.client.logout()
         resp = self.client.post(self.resource_list_path, data=self.resource)

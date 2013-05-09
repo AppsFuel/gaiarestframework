@@ -1,5 +1,5 @@
 from djangorestframework.mixins import ReadModelMixin, DeleteModelMixin
-from djangorestframework.permissions import IsAuthenticated
+from djangorestframework.permissions import IsUserOrIsAnonReadOnly
 from djangorestframework.views import ModelView
 from gaiarestframework.mixins import *
 
@@ -20,8 +20,8 @@ class GaiaInstanceModelView(ReadModelMixin, GaiaUpdateModelMixin, DeleteModelMix
 
 
 class AuthGaiaListOrCreateModelView(GaiaListOrCreateModelView):
-    permissions = (IsAuthenticated, )
+    permissions = (IsUserOrIsAnonReadOnly, )
 
 
 class AuthGaiaInstanceModelView(GaiaInstanceModelView):
-    permissions = (IsAuthenticated, )
+    permissions = (IsUserOrIsAnonReadOnly, )
