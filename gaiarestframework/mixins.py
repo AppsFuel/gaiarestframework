@@ -1,4 +1,6 @@
+from djangorestframework import status
 from djangorestframework.mixins import *
+from djangorestframework.response import ErrorResponse
 from gaiarestframework.settings import GAIA_PAGINATOR_LIMIT
 
 __all__ = (
@@ -51,6 +53,12 @@ class GaiaUpdateModelMixin(UpdateModelMixin):
         resp = super(GaiaUpdateModelMixin, self).put(request, *args, **kwargs)
         return self.resource.model.objects.get(pk=resp.pk)
 
+    def get_instance(self, **kwargs):
+        try:
+            return super(GaiaUpdateModelMixin, self).get_instance(**kwargs)
+        except self.resource.model.DoesNotExist:
+            raise ErrorResponse(status.HTTP_404_NOT_FOUND)
+
 
 class GaiaPaginatorMixin(PaginatorMixin):
     limit = GAIA_PAGINATOR_LIMIT
@@ -59,3 +67,12 @@ class GaiaPaginatorMixin(PaginatorMixin):
         return self.request.build_absolute_uri(
             super(GaiaPaginatorMixin, self).url_with_page_number(page_number)
         )
+
+    def get_limit(self):
+        try:
+            limit = int(self.request.GET.get('limit', self.limit))
+        except ValueError:
+            raise ErrorResponse(status.HTTP_400_BAD_REQUEST)
+        if limit <= 0:
+            raise ErrorResponse(status.HTTP_400_BAD_REQUEST)
+        return min(limit, self.limit)

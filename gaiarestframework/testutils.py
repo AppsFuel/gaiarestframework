@@ -26,6 +26,32 @@ class GaiaTestCase(TestCase):
     def resource_update(self):
         return self.resource
 
+    def testReadNotFound(self):
+        self.resource_cls.objects.all().delete()
+        resp = self.client.get(self.resource_instance_path)
+        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.content, '')
+
+    def testUpdateNotFound(self):
+        self.resource_cls.objects.all().delete()
+        resp = self.client.put(self.resource_instance_path, content_type='application/json')
+        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.content, '')
+
+    def testDeleteNotFound(self):
+        self.resource_cls.objects.all().delete()
+        resp = self.client.delete(self.resource_instance_path, content_type='application/json')
+        self.assertEqual(resp.status_code, 404)
+        self.assertEqual(resp.content, '')
+
+    def testListContentPaginationBadLimit(self):
+        resp = self.client.get(self.resource_list_path + '?limit=0')
+        self.assertEqual(resp.status_code, 400)
+        resp = self.client.get(self.resource_list_path + '?limit=-1')
+        self.assertEqual(resp.status_code, 400)
+        resp = self.client.get(self.resource_list_path + '?limit=str')
+        self.assertEqual(resp.status_code, 400)
+
     def testReadStatus(self):
         resp = self.client.get(self.resource_list_path)
         self.assertEqual(resp.status_code, 200)
