@@ -1,3 +1,4 @@
+import json
 from gaiarestframework import testutils
 from django.core.urlresolvers import reverse
 from example.library.models import Genre
@@ -17,3 +18,10 @@ class GenreListTestCase(testutils.GaiaAuthTestCase):
         return {
             'url': testutils.reverse('genre_info', kwargs={'description': obj.pk}),
         }
+
+    def test___in(self):
+        resp = self.client.get(self.resource_list_path + '?description__in=Fantasy,Adventure')
+        self.assertEqual(resp.status_code, 200)
+        content = json.loads(resp.content)
+        self.assertEqual(len(content['results']), 2)
+

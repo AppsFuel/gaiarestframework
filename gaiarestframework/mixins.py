@@ -15,9 +15,15 @@ __all__ = (
 QP_RESERVED = ('limit', 'page')
 
 
+def _t(k, v):
+    if k.endswith('__in'):
+        v = v.split(',')
+    return k, v
+
+
 class GaiaListModelMixin(ListModelMixin):
     def get_query_kwargs(self, request, *args, **kwargs):
-        kwargs.update([(str(k), v) for k, v in request.GET.items() if k not in QP_RESERVED])
+        kwargs.update([_t(k, v) for k, v in request.GET.items() if k not in QP_RESERVED])
         return super(GaiaListModelMixin, self).get_query_kwargs(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
