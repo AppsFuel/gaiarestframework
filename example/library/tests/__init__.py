@@ -1,8 +1,8 @@
 import doctest
 import unittest
-
 list_of_doctests = []
 list_of_unittests = ['author','book','genre']
+
 
 def suite():
     suite = unittest.TestSuite()

@@ -4,12 +4,13 @@ from gaiarestframework.views import *
 
 from .resources import *
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^author/$',
-        GaiaListOrCreateModelView.as_view(resource=AuthorResource),
+        GaiaListModelView.as_view(resource=AuthorResource),
         name='author_list'),
     url(r'^author/(?P<id>[^/]+)/$',
-        GaiaInstanceModelView.as_view(resource=AuthorResource),
+        GaiaReadModelView.as_view(resource=AuthorResource),
         name='author_info'),
 
     url(r'^author/(?P<author>[^/]+)/book/$',

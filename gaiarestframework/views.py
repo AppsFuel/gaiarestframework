@@ -8,6 +8,8 @@ __all__ = (
     'GaiaInstanceModelView',
     'AuthGaiaListOrCreateModelView',
     'AuthGaiaInstanceModelView',
+    'GaiaListModelView',
+    'GaiaReadModelView',
 )
 
 
@@ -25,3 +27,11 @@ class AuthGaiaListOrCreateModelView(GaiaListOrCreateModelView):
 
 class AuthGaiaInstanceModelView(GaiaInstanceModelView):
     permissions = (IsUserOrIsAnonReadOnly, )
+
+
+class GaiaListModelView(GaiaPaginatorMixin, GaiaListModelMixin, ModelView):
+    _suffix = 'List'
+
+
+class GaiaReadModelView(ReadModelMixin, ModelView):
+    _suffix = 'Instance'
