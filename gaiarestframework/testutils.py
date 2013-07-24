@@ -28,7 +28,7 @@ class TestNeed(object):
         def wrapper(*args):
             for mixin in self.mixins:
                 if not issubclass(getattr(args[0], self._type), mixin):
-                    raise unittest.SkipTest()
+                    return lambda x: x
             return f
         return wrapper
 
