@@ -28,7 +28,7 @@ class TestNeed(object):
         def wrapper(*args):
             for mixin in self.mixins:
                 if not issubclass(getattr(args[0], self._type), mixin):
-                    return lambda x: x
+                    raise unittest.SkipTest()
             return f
         return wrapper
 
@@ -46,7 +46,6 @@ class NeedDelete(TestNeed):
 class NeedCreate(TestNeed):
     def __init__(self):
         super(NeedCreate, self).__init__('list', mixins.GaiaCreateModelMixin)
-
 
 
 class GaiaTestCase(TestCase):
