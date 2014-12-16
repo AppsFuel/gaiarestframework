@@ -35,7 +35,7 @@ class GaiaListModelMixin(ListModelMixin):
             for key, value in query_kwargs.copy().iteritems():
                 if key.endswith('__md5'):
                     attribute, _ = key.split('__')
-                    queryset = queryset.extra(where=["MD5(\"{0}\") = \"{1}\"".format(attribute, value)])
+                    queryset = queryset.extra(where=["MD5({0}) = \"{1}\"".format(attribute, value)])
                     del query_kwargs[key]
 
             queryset = queryset.filter(**query_kwargs)
