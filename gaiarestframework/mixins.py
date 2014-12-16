@@ -28,7 +28,21 @@ class GaiaListModelMixin(ListModelMixin):
 
     def get(self, request, *args, **kwargs):
         try:
-            return super(GaiaListModelMixin, self).get(request, *args, **kwargs)
+            queryset = self.get_queryset()
+            ordering = self.get_ordering()
+            query_kwargs = self.get_query_kwargs(request, *args, **kwargs)
+
+            for key, value in query_kwargs.copy().iteritems():
+                if key.endswith('__md5'):
+                    attribute, _ = key.split('__')
+                    queryset = queryset.extra(where=["MD5(\"{0}\") = \"{1}\"".format(attribute, value)])
+                    del query_kwargs[key]
+
+            queryset = queryset.filter(**query_kwargs)
+            if ordering:
+                queryset = queryset.order_by(*ordering)
+
+            return queryset
         except FieldError as e:
             raise ErrorResponse(status.HTTP_400_BAD_REQUEST, {'detail': '%s' % e})
 

@@ -6,10 +6,10 @@ env:
   - DJANGO=1.4
   - DJANGO=1.5
 install:
-  - pip install -q django==$DJANGO --use-mirrors
-  - pip install -q -e . --use-mirrors
+  - pip install -q django==$DJANGO
+  - pip install -q -e .
 before_script:
-  - pip install -q -r test_requirements.txt --use-mirrors
+  - pip install -q -r test_requirements.txt
 script:
   - pep8 --ignore=E501 gaiarestframework
   - python example/manage.py test library

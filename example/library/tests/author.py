@@ -1,4 +1,7 @@
+import json
+from django.db import DatabaseError
 from django.core.urlresolvers import reverse
+from django.utils import unittest
 from gaiarestframework import testutils
 from example.library.models import Author
 
@@ -20,4 +23,14 @@ class AuthorTestCase(testutils.GaiaTestCase):
         return {
             'url': testutils.reverse('author_info', kwargs={'id': obj.id}),
         }
+
+    def test__md5(self):
+        try:
+            resp = self.client.get(self.resource_list_path + '?name__md5=dad5840ce44580d3a549fa326e104704')
+            self.assertEqual(resp.status_code, 200)
+            content = json.loads(resp.content)
+            self.assertEqual(content, '')
+        except DatabaseError:  # SQLITE3
+            raise unittest.SkipTest()
+
 

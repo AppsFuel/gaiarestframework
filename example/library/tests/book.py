@@ -1,6 +1,6 @@
 from gaiarestframework import testutils
 from django.core.urlresolvers import reverse
-from example.library.models import Book, Author
+from example.library.models import Book
 
 
 class BookListTestCase(testutils.GaiaTestCase):

@@ -11,7 +11,7 @@ pkg = __import__('gaiarestframework')
 
 author, email = 'Andrea De Marco', 'andrea.demarco@buongiorno.com'
 
-version = '0.4.5'
+version = '0.5.0'
 classifiers = [
     'Development Status :: 4 - Beta',
     'Framework :: Django',
@@ -21,7 +21,7 @@ classifiers = [
     'Topic :: Software Development :: Libraries',
 ]
 
-readme = open(os.path.join(wd, 'README.rst'),'r').readlines()
+readme = open(os.path.join(wd, 'README.rst'), 'r').readlines()
 description = readme[1]
 long_description = ''.join(readme)
 
